@@ -20,11 +20,6 @@ $ gst-launch-1.0 -v v4l2src device=/dev/video0 do-timestamp=true ! "video/x-raw,
 
 gst-launch-1.0 videotestsrc is-live=true ! x264enc ! mpegtsmux ! hlssink
 
-gst-launch-1.0 uridecodebin uri=http://artelive-lh.akamaihd.net/i/artelive_de@393591/master.m3u8 download=false ! queue ! x264enc ! mpegtsmux ! udpsink host=239.1.10.100 port=1234 auto-multicast=true
-
-gst-launch-1.0 videotestsrc is-live=true ! x264enc ! mpegtsmux ! hlssink
-
 gst-launch-1.0 videotestsrc is-live=true ! queue ! x264enc ! mpegtsmux ! udpsink host=239.1.10.100 port=1234 auto-multicast=true
 
-gst-launch-1.0 -v filesrc location=audio-video.pcap ! pcapparse src-port=1 !
-"application/x-rtp, payload=111, encoding-name=OPUS" ! rtpopusdepay ! fakesink
+gst-launch-1.0 -v filesrc location=audio-video.pcap ! pcapparse src-port=1 ! "application/x-rtp, payload=111, encoding-name=OPUS" ! rtpopusdepay ! fakesink
