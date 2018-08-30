@@ -1,6 +1,6 @@
 # gstreamer_commands
 Gstreamer commands
-
+```
 ## h264encoder video filsrc to udpsink
 
 $ gst-launch-1.0 -ev filesrc location=file.mp4 ! qtdemux ! h264parse ! rtph264pay config-interval=1 timestamp=0 seqnum=0 perfect-rtptime=true ! udpsink clients=192.168.0.60:5000,192.168.0.60:5001 auto-multicast=true sync=true
@@ -23,3 +23,4 @@ gst-launch-1.0 videotestsrc is-live=true ! x264enc ! mpegtsmux ! hlssink
 gst-launch-1.0 videotestsrc is-live=true ! queue ! x264enc ! mpegtsmux ! udpsink host=239.1.10.100 port=1234 auto-multicast=true
 
 gst-launch-1.0 -v filesrc location=audio-video.pcap ! pcapparse src-port=1 ! "application/x-rtp, payload=111, encoding-name=OPUS" ! rtpopusdepay ! fakesink
+```
