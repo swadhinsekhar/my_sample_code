@@ -21,9 +21,8 @@ gboolean internal_bus_call (GstBus *bus, GstMessage *msg, gpointer data)
   GMainLoop *loop = (GMainLoop *) data;
 
   switch (GST_MESSAGE_TYPE (msg)) {
-
-    case GST_MESSAGE_EOS:
-      g_print ("From internal bus! End of stream\n");
+  	case GST_MESSAGE_EOS:
+    	g_print ("From internal bus! End of stream\n");
       g_main_loop_quit (loop);
       break;
 
