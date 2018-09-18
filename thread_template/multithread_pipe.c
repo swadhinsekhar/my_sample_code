@@ -11,7 +11,7 @@
  *		info threads
  *		thread 2
  *
- *
+ * compile : gcc multithread_pipe.c -o multithread -levent -lpthread
  */
 
 typedef struct tid_thread_essential_s
@@ -74,7 +74,7 @@ void worker_on_read(int fd, short ev, void *arg)
         video_process_handler(thr_msg);
       /*
 			} else if(WORKER_ANY == thr_ess->proto->interface) {
-        web_proto_mssg_sm_handler(thr_msg);
+        other_worker_process_handler(thr_msg);
 			*/
       }
     } else if(FORMAT_PULSE == thr_msg->format) {
