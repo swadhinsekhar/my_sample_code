@@ -1,5 +1,5 @@
 /*
-* STACK Operation
+* STACK Operation : Array Representation
 * LIFO - Last In - Fast Out
 *
 *  ADT Stack (Abstraction Datatype Stack)
