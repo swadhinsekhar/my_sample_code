@@ -81,6 +81,26 @@ void reverse_bits(int a)
     printf("\n");
 }
 
+void swap_num(int a, int b)
+{
+    int i, j, m, n;
+
+    printf("before swap:  a : %d b : %d\n", a, b);
+
+    for(i=0, j = 0; i < 32; i++, j++) {
+        m = a & (1<<i);
+        n = b & (1<<j);
+        if(m != n) {
+            a = a ^ (1<<i);
+            b = b ^ (1<<j);
+        }
+    }
+
+    printf("After swap:  a : %d b : %d\n", a, b);
+
+    printf("\n");
+}
+
 #ifdef MAIN
 int main()
 {
@@ -97,5 +117,6 @@ int main()
     printf("%d is even : (%s)\n", x, (IS_EVEN(x))? "true": "false");
     printf("%d is power of 4 : (%s)\n", x, (is_power_of_4(x))? "true": "false");
     printf("%d is power of 4 macro : (%s)\n", x, (IS_POW4(x))? "true": "false");
+    swap_num(10, 21);
 }
 #endif
