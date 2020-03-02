@@ -50,9 +50,21 @@ int count_bit(unsigned char x)
     int count = 0;
 
     while(x) {
-        if(x & 1)
-            count++;
+        count += x & 1;
         x >>= 1;
+    }
+
+    return count;
+}
+
+/* Brian Kernighan’s Algorithm */
+int count_bit_brian(unsigned char x)
+{
+    int count = 0;
+
+    while(x) {
+        x &= (x - 1);
+        count++;
     }
 
     return count;
@@ -104,10 +116,11 @@ void swap_num(int a, int b)
 #ifdef MAIN
 int main()
 {
-    char    a = 55;
+    char    a = 10;
 
     printf("%d\n", count_bit(a));
     printf("%d\n", count_bits(a));
+    printf("%d\n", count_bit_brian(a));
 
     int num = 1024;
     reverse_bits(num);
